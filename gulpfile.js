@@ -1,22 +1,10 @@
 var gulp = require('gulp');
 var eslint = require('gulp-eslint');
+var mocha = require('gulp-mocha');
 
-// gulp.task('default', function(){
-//   console.log('running default task');
-//   gulp
-//         .src('./src/**/*.js')
-//         .pipe(gulp.dest('./build'))
-// });
-//
-//
-// gulp.task('delayed', function (done) {
-//     setTimeout(function () {
-//         console.log('Delayed by 2 seconds');
-//         done();
-//     }, 2000);
-// });
 
-gulp.task('default', ['lint']);
+
+gulp.task('default', ['test']);
 
 gulp.task('lint', function(){
   return gulp.src('./**/*.js')
@@ -24,3 +12,8 @@ gulp.task('lint', function(){
               .pipe(eslint.format())
               .pipe(eslint.failAfterError());
 });
+
+gulp.task('test', function () {
+    return gulp.src('./test/*.js', {read: false})
+        .pipe(mocha())
+})
