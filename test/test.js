@@ -1,8 +1,10 @@
-var code = require('../main');
 var expect = require('chai').expect;
+var Scope = require('../src/scope');
 
-describe('hello World', function(){
-  it('should say Hello, World! when ran', function(){
-    expect(code.helloWorld()).to.equal("Hello, World!");
+describe('Scope', function(){
+  it('it can construct and be used as an object', function(){
+    var scope = new Scope();
+    scope.aProperty = 1;
+    expect(scope.aProperty).to.equal(1);
   });
 });
